@@ -47,6 +47,9 @@ function! SyntaxCheckers_ruby_mri_GetLocList() dict
     "the word "possibly" in the warning
     let errorformat = '%-G%\m%.%#warning: %\%%(possibly %\)%\?useless use of == in void context,'
 
+    " filter out lines about the use of & and * without parenthesis
+    let errorformat .= '%-G%\m%.%#warning: %.%.%. interpreted as argument prefix,'
+
     " filter out lines starting with ...
     " long lines are truncated and wrapped in ... %p then returns the wrong
     " column offset
